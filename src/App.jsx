@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Trolley from "./components/Trolley";
 
 const GridContainer = styled.div`
   display: grid;
@@ -13,7 +14,10 @@ const GridContainer = styled.div`
 const Header = styled.header`
   grid-area: header;
   padding: 1rem;
-  background: lightblue;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 const Main = styled.main`
@@ -27,6 +31,7 @@ export default function App() {
     <GridContainer>
       <Header>
         Header content
+        <Trolley />
         {/* logo
         nav bar
         trolley button with slideout */}
