@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Trolley from "./components/Trolley";
+import MainLogo from "./components/MainLogo";
 
 const GridContainer = styled.div`
   display: grid;
@@ -30,7 +31,7 @@ export default function App() {
   return (
     <GridContainer>
       <Header>
-        Header content
+        <MainLogo />
         <Trolley />
         {/* logo
         nav bar
