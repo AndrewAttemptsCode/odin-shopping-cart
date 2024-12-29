@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import styled from "styled-components";
 
-function App() {
-  const [count, setCount] = useState(0)
+const GridContainer = styled.div`
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "header"
+    "main";
+  background: #f1f5f9;
+  height: 100vh;
+`;
 
+const Header = styled.header`
+  grid-area: header;
+  padding: 1rem;
+  background: lightblue;
+`;
+
+const Main = styled.main`
+  grid-area: main;
+  padding: 1rem;
+  background: lightcoral;
+`;
+
+export default function App() {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <GridContainer>
+      <Header>
+        Header content
+        {/* logo
+        nav bar
+        trolley button with slideout */}
+      </Header>
+      <Main>
+        Main content
+        {/* landing page
+        shopping items page
+        view full trolley page */}
+      </Main>
+    </GridContainer>
+  );
 }
-
-export default App
