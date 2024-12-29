@@ -5,8 +5,8 @@ const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
+  gap: 1rem;
+  padding: 1rem 2rem;
   border-radius: 5px;
   border: none;
   background-color: #fbbf24;
