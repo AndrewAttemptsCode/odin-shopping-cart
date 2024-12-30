@@ -1,48 +1,39 @@
 import styled from "styled-components";
-import Trolley from "./components/Trolley";
 import MainLogo from "./components/MainLogo";
+import { useNavigate } from "react-router-dom";
 
-const GridContainer = styled.div`
-  display: grid;
-  grid-template-rows: auto 1fr;
-  grid-template-areas:
-    "header"
-    "main";
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
   background: #f1f5f9;
   height: 100vh;
 `;
 
-const Header = styled.header`
-  grid-area: header;
-  padding: 1rem;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const Main = styled.main`
-  grid-area: main;
-  padding: 1rem;
-  background: lightcoral;
+const EnterButton = styled.button`
+  padding: 0.5rem 4rem;
+  background: #f1f1f1;
+  border: 4px solid black;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 2.5rem;
 `;
 
 export default function App() {
+  const navigate = useNavigate();
+
+  function handleEnter() {
+    navigate('/shop');
+  };
+
   return (
-    <GridContainer>
-      <Header>
-        <MainLogo />
-        <Trolley />
-        {/* logo
-        nav bar
-        trolley button with slideout */}
-      </Header>
-      <Main>
-        Main content
-        {/* landing page
-        shopping items page
-        view full trolley page */}
-      </Main>
-    </GridContainer>
+    <Container>
+      <MainLogo to="/shop" $size="120px" $textSize="3rem" />
+      <EnterButton onClick={handleEnter}>
+        Enter
+      </EnterButton>
+    </Container>
   );
 }
