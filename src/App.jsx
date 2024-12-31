@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import MainLogo from "./components/MainLogo";
 import { useNavigate } from "react-router-dom";
+import PulsingCircles from "./components/PulsingCircles";
 
 const Container = styled.div`
+  position: relative;
+  z-index: 5;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,6 +31,14 @@ const EnterButton = styled.button`
   }
 `;
 
+const CircleContainer = styled.div`
+  position: absolute;
+  z-index: -1;
+  width: 50%;
+  height: 50%;
+  pointer-events: none;
+`;
+
 export default function App() {
   const navigate = useNavigate();
 
@@ -37,6 +48,9 @@ export default function App() {
 
   return (
     <Container>
+      <CircleContainer>
+        <PulsingCircles />
+      </CircleContainer>
       <MainLogo to="/shop" $size="120px" $textSize="3rem" />
       <EnterButton onClick={handleEnter}>
         Enter
@@ -44,5 +58,3 @@ export default function App() {
     </Container>
   );
 }
-
-// circle pulsing effect
