@@ -15,10 +15,17 @@ const Container = styled.div`
 const EnterButton = styled.button`
   padding: 0.5rem 4rem;
   background: #f1f1f1;
-  border: 4px solid black;
+  color: #451a03;
+  border: 4px solid #451a03;
   cursor: pointer;
   font-weight: 400;
   font-size: 2.5rem;
+  transition: color 0.2s ease, border-color 0.2s ease;
+
+  &:hover {
+    border-color: #b45309;
+    color: #b45309;
+  }
 `;
 
 export default function App() {
@@ -37,3 +44,5 @@ export default function App() {
     </Container>
   );
 }
+
+// circle pulsing effect
