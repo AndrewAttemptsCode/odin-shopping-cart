@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Trolley from "../components/Trolley";
 import MainLogo from "../components/MainLogo";
+import { Outlet } from "react-router-dom";
 
 const GridContainer = styled.div`
   display: grid;
@@ -38,7 +39,7 @@ export default function Layout() {
         trolley button with slideout */}
       </Header>
       <Main>
-        Main content
+        <Outlet />
         {/* landing page
         shopping items page
         view full trolley page */}
