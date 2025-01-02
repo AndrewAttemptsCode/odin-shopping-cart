@@ -6,9 +6,8 @@ import styled from "styled-components";
 const Container = styled.div`
   display: grid;
   gap: 2rem;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fill, 200px);
   justify-content: center;
-  max-width: calc((200px * 5) + (4 * 2rem));
   margin: 0 auto;
 `;
 
