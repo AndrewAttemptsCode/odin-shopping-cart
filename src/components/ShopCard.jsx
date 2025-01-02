@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const CardContainer = styled.div`
@@ -18,11 +19,17 @@ const ProductImage = styled.img`
 `;
 
 const ProductTitle = styled.h2`
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 700;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+`;
+
+const ProductPrice = styled.p`
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #fbbf24;
 `;
 
 export default function ShopCard({ src, title, price }) {
@@ -33,9 +40,19 @@ export default function ShopCard({ src, title, price }) {
       <ProductTitle title={title}>
         {title}
       </ProductTitle>
+      <ProductPrice>
+        £{price}
+      </ProductPrice>
+      {/* todo: add item to cart button */}
     </CardContainer>
   );
 };
+
+ShopCard.propTypes = {
+  src: PropTypes.string,
+  title: PropTypes.string,
+  price: PropTypes.number,
+}
 
 // {
 //   "id": 1,
