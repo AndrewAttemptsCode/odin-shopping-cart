@@ -3,6 +3,7 @@ import styled from "styled-components";
 const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 1rem;
   padding: 1rem;
   border-radius: 5px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
@@ -16,10 +17,22 @@ const ProductImage = styled.img`
   height: 200px;
 `;
 
+const ProductTitle = styled.h2`
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+`;
+
 export default function ShopCard({ src, title, price }) {
   return (
     <CardContainer>
       <ProductImage src={src} />
+      <hr />
+      <ProductTitle title={title}>
+        {title}
+      </ProductTitle>
     </CardContainer>
   );
 };
