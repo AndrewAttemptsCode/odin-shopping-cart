@@ -11,7 +11,7 @@ const GridContainer = styled.div`
     "header"
     "main";
   background: #f1f5f9;
-  height: 100vh;
+  min-height: 100vh;
 `;
 
 const Header = styled.header`
