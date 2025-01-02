@@ -1,15 +1,14 @@
 import { useOutletContext } from "react-router-dom";
+import Spinner from "../components/Spinner";
 
 export default function ShopPage() {
   const { shopItems } = useOutletContext();
 
   return (
     <>
-      Shop page
-      {/* add conditional if shopitems > 0 if not add spinner */}
-      {shopItems.map((item) => (
+      {shopItems.length > 0 ? shopItems.map((item) => (
         <p key={item.id}>{item.title}</p>
-      ))}
+      )) : <Spinner />}
     </>
   );
 };
