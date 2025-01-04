@@ -55,6 +55,17 @@ export default function Layout() {
     })
   };
 
+  function removeFromTrolley(id) {
+    setShopTrolley((prev) => {
+      return prev.map((trolleyItem) => 
+        trolleyItem.id === id
+        ? {...trolleyItem, quantity: trolleyItem.quantity - 1}
+        : trolleyItem
+      )
+      .filter((trolleyItem) => trolleyItem.quantity > 0)
+    });
+  };
+
   return (
     <GridContainer>
       <Header>
@@ -65,7 +76,7 @@ export default function Layout() {
         trolley button with slideout */}
       </Header>
       <Main>
-        <Outlet context={{ shopItems, addToTrolley }} />
+        <Outlet context={{ shopItems, shopTrolley, addToTrolley, removeFromTrolley }} />
         {/* landing page
         shopping items page
         view full trolley page */}
