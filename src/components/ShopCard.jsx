@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import { useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import styled from "styled-components";
 
@@ -47,8 +46,30 @@ const PurchaseButton = styled.button`
   }
 `;
 
+const DynamicButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const DecrementButton = styled(PurchaseButton)`
+  width: 50px;
+`;
+
+const IncrementButton = styled(PurchaseButton)`
+  width: 50px;
+`;
+
+const QuantityDisplay = styled.span`
+  font-weight: bold;
+`;
+
 export default function ShopCard({ id, src, title, price }) {
-  const { addToTrolley } = useOutletContext();
+  const { shopTrolley, addToTrolley, removeFromTrolley } = useOutletContext();
+
+  const itemInTrolley = shopTrolley.find((item) => item.id === id) || null;
+  const quantity = itemInTrolley ? itemInTrolley.quantity : 0;
 
   return (
     <CardContainer>
@@ -60,9 +81,17 @@ export default function ShopCard({ id, src, title, price }) {
       <ProductPrice>
         £{price}
       </ProductPrice>
-      <PurchaseButton onClick={() => addToTrolley({ id, title, price, src })}>
-        Add
-      </PurchaseButton>
+      {quantity === 0 ? (
+        <PurchaseButton onClick={() => addToTrolley({ id, title, price, src })}>
+          Add
+        </PurchaseButton>
+      ) : (
+        <DynamicButtonContainer>
+        <DecrementButton onClick={() => removeFromTrolley(id)}>-</DecrementButton>
+        <QuantityDisplay>{quantity}</QuantityDisplay>
+        <IncrementButton onClick={() => addToTrolley({ id, title, price, src })}>+</IncrementButton>
+        </DynamicButtonContainer>
+      )}
     </CardContainer>
   );
 };
