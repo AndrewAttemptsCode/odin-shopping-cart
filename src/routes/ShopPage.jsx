@@ -19,6 +19,7 @@ export default function ShopPage() {
       {shopItems.length > 0 ? shopItems.map((item) => (
         <ShopCard
           key={item.id}
+          id={item.id}
           src={item.image}
           title={item.title}
           price={item.price}
