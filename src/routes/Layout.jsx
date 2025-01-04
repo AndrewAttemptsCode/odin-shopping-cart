@@ -30,6 +30,7 @@ const Main = styled.main`
 
 export default function Layout() {
   const [shopItems, setShopItems] = useState([]);
+  const [shopTrolley, setShopTrolley] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -39,6 +40,20 @@ export default function Layout() {
     };
     fetchData();
   }, []);
+
+  function addToTrolley(item) {
+    setShopTrolley((prev) => {
+      const existingItem = prev.find((trolleyItem) => trolleyItem.id === item.id);
+      if (existingItem) {
+        return prev.map((trolleyItem) => 
+          trolleyItem.id === item.id
+          ? {...trolleyItem, quantity: trolleyItem.quantity + 1}
+          : trolleyItem
+        );
+      }
+      return [...prev, {...item, quantity: 1}];
+    })
+  };
 
   return (
     <GridContainer>
@@ -50,7 +65,7 @@ export default function Layout() {
         trolley button with slideout */}
       </Header>
       <Main>
-        <Outlet context={{ shopItems }} />
+        <Outlet context={{ shopItems, addToTrolley }} />
         {/* landing page
         shopping items page
         view full trolley page */}
