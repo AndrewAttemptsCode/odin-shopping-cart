@@ -1,4 +1,6 @@
 import PropTypes from "prop-types";
+import { useEffect } from "react";
+import { useOutletContext } from "react-router-dom";
 import styled from "styled-components";
 
 const CardContainer = styled.div`
@@ -45,10 +47,12 @@ const PurchaseButton = styled.button`
   }
 `;
 
-export default function ShopCard({ src, title, price }) {
+export default function ShopCard({ id, src, title, price }) {
+  const { addToTrolley } = useOutletContext();
+
   return (
     <CardContainer>
-      <ProductImage src={src} />
+      <ProductImage src={src} alt="" />
       <hr />
       <ProductTitle title={title}>
         {title}
@@ -56,7 +60,7 @@ export default function ShopCard({ src, title, price }) {
       <ProductPrice>
         £{price}
       </ProductPrice>
-      <PurchaseButton>
+      <PurchaseButton onClick={() => addToTrolley({ id, title, price, src })}>
         Add
       </PurchaseButton>
     </CardContainer>
@@ -64,9 +68,10 @@ export default function ShopCard({ src, title, price }) {
 };
 
 ShopCard.propTypes = {
-  src: PropTypes.string,
-  title: PropTypes.string,
-  price: PropTypes.number,
+  id: PropTypes.number.isRequired,
+  src: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
 }
 
 // {
