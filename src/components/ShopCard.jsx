@@ -32,6 +32,19 @@ const ProductPrice = styled.p`
   color: #fbbf24;
 `;
 
+const PurchaseButton = styled.button`
+  transition: background-color 0.2s ease;
+  background-color: #fcd34d;
+  border: 1px solid #fbbf24;
+  padding: 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #fbbf24;
+  }
+`;
+
 export default function ShopCard({ src, title, price }) {
   return (
     <CardContainer>
@@ -43,7 +56,9 @@ export default function ShopCard({ src, title, price }) {
       <ProductPrice>
         £{price}
       </ProductPrice>
-      {/* todo: add item to cart button */}
+      <PurchaseButton>
+        Add
+      </PurchaseButton>
     </CardContainer>
   );
 };
