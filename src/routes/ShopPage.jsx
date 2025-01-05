@@ -11,12 +11,26 @@ const Container = styled.div`
   margin: 0 auto;
 `;
 
+const SpinnerWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export default function ShopPage() {
   const { shopItems } = useOutletContext();
 
+  if (shopItems.length === 0) {
+    return (
+      <SpinnerWrapper>
+        <Spinner />
+      </SpinnerWrapper>
+    );
+  };
+
   return (
     <Container>
-      {shopItems.length > 0 ? shopItems.map((item) => (
+      {shopItems.map((item) => (
         <ShopCard
           key={item.id}
           id={item.id}
@@ -24,8 +38,7 @@ export default function ShopPage() {
           title={item.title}
           price={item.price}
         />
-      )) : <Spinner />}
-      
+      ))}
     </Container>
   );
 };
