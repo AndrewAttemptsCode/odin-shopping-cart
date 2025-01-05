@@ -22,7 +22,7 @@ export default function ShopPage() {
           id={item.id}
           src={item.image}
           title={item.title}
-          price={item.price}
+          price={item.price.toFixed(2)}
         />
       )) : <Spinner />}
       
