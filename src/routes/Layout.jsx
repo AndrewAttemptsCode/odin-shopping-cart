@@ -66,11 +66,13 @@ export default function Layout() {
     });
   };
 
+  const totalItems = shopTrolley.reduce((acc, curr) => acc + curr.quantity, 0);
+
   return (
     <GridContainer>
       <Header>
         <MainLogo />
-        <Trolley />
+        <Trolley totalItems={totalItems} />
         {/* logo
         nav bar
         trolley button with slideout */}
