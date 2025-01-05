@@ -1,7 +1,9 @@
 import { ShoppingCart } from "lucide-react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const Button = styled.button`
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,13 +25,37 @@ const Button = styled.button`
   }
 `;
 
-export default function Trolley() {
+const TotalItemContainer = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  right: 0;
+  transform: translate(5px, -5px);
+  background-color: red;
+  color: #fefefe;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+`;
+
+export default function Trolley({ totalItems }) {
   return (
     <Button>
       <ShoppingCart />
       {/* placeholder price (needs state updater) */}
       £0.00
-      {/* total item count overlay display */}
+      {totalItems > 0 &&
+        <TotalItemContainer>
+          {totalItems}
+        </TotalItemContainer>
+      }
     </Button> 
   );
+};
+
+Trolley.propTypes = {
+  totalItems: PropTypes.number.isRequired,
 };
