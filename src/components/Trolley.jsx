@@ -23,6 +23,12 @@ const Button = styled.button`
   &:focus {
     outline: 2px solid black;
   }
+
+  &:disabled {
+    background-color: transparent;
+    color: #666;
+    cursor: not-allowed;
+  }
 `;
 
 const TotalItemContainer = styled.div`
@@ -41,11 +47,10 @@ const TotalItemContainer = styled.div`
   height: 30px;
 `;
 
-export default function Trolley({ totalItems, totalPrice }) {
+export default function Trolley({ totalItems, totalPrice, disabled }) {
   return (
-    <Button>
+    <Button disabled={disabled}>
       <ShoppingCart />
-      {/* placeholder price (needs state updater) */}
       £{totalPrice.toFixed(2)}
       {totalItems > 0 &&
         <TotalItemContainer>
@@ -59,4 +64,5 @@ export default function Trolley({ totalItems, totalPrice }) {
 Trolley.propTypes = {
   totalItems: PropTypes.number.isRequired,
   totalPrice: PropTypes.number.isRequired,
+  disabled: PropTypes.bool.isRequired,
 };
