@@ -67,12 +67,13 @@ export default function Layout() {
   };
 
   const totalItems = shopTrolley.reduce((acc, curr) => acc + curr.quantity, 0);
+  const totalPrice = shopTrolley.reduce((acc, curr) => acc + (curr.price * curr.quantity), 0);
 
   return (
     <GridContainer>
       <Header>
         <MainLogo />
-        <Trolley totalItems={totalItems} />
+        <Trolley totalItems={totalItems} totalPrice={totalPrice} />
         {/* logo
         nav bar
         trolley button with slideout */}

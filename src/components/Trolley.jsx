@@ -41,12 +41,12 @@ const TotalItemContainer = styled.div`
   height: 30px;
 `;
 
-export default function Trolley({ totalItems }) {
+export default function Trolley({ totalItems, totalPrice }) {
   return (
     <Button>
       <ShoppingCart />
       {/* placeholder price (needs state updater) */}
-      £0.00
+      £{totalPrice.toFixed(2)}
       {totalItems > 0 &&
         <TotalItemContainer>
           {totalItems}
@@ -58,4 +58,5 @@ export default function Trolley({ totalItems }) {
 
 Trolley.propTypes = {
   totalItems: PropTypes.number.isRequired,
+  totalPrice: PropTypes.number.isRequired,
 };

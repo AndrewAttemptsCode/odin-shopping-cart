@@ -79,7 +79,7 @@ export default function ShopCard({ id, src, title, price }) {
         {title}
       </ProductTitle>
       <ProductPrice>
-        £{price}
+        £{price.toFixed(2)}
       </ProductPrice>
       {quantity === 0 ? (
         <PurchaseButton onClick={() => addToTrolley({ id, title, price, src })}>
