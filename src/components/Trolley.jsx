@@ -133,7 +133,7 @@ export default function Trolley({ totalItems, totalPrice, disabled }) {
         </TrolleyMain>
         <TrolleyFooter>
           <h2>Subtotal</h2>
-          <h2>£{totalPrice}</h2>
+          <h2>£{totalPrice.toFixed(2)}</h2>
         </TrolleyFooter>
       </TrolleyContainer>
     }
