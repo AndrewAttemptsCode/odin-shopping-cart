@@ -50,15 +50,17 @@ const TotalItemContainer = styled.div`
 
 const TrolleyContainer = styled.div`
   display: flex;
+  flex-direction: column;
   position: fixed;
   top: 0;
   right: 0;
   z-index: 10;
-  min-height: 65vh;
-  padding: 1rem;
-  overflow-y: auto;
+  height: 100%;
   width: 300px;
   background-color: #fefefe;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
 
   transform-origin: right;
   animation: slide 0.2s ease;
@@ -71,6 +73,14 @@ const TrolleyContainer = styled.div`
       transform: scaleX(1);
     }
   }
+`;
+
+const TrolleyHeader = styled.header`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
 `;
 
 const CloseButton = styled(X)`
@@ -99,7 +109,11 @@ export default function Trolley({ totalItems, totalPrice, disabled }) {
     
     {openTrolley &&
       <TrolleyContainer>
-        <CloseButton onClick={toggleTrolley} size={32} aria-label="close trolley" />
+        <TrolleyHeader>
+          <h2>Trolley ({totalItems} {totalItems === 1 ? 'item' : 'items'})</h2>
+          <CloseButton onClick={toggleTrolley} size={32} aria-label="close trolley" />
+        </TrolleyHeader>
+        
       </TrolleyContainer>
     }
     </>
