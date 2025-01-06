@@ -1,5 +1,6 @@
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart, X } from "lucide-react";
 import PropTypes from "prop-types";
+import { useState } from "react";
 import styled from "styled-components";
 
 const Button = styled.button`
@@ -47,9 +48,46 @@ const TotalItemContainer = styled.div`
   height: 30px;
 `;
 
+const TrolleyContainer = styled.div`
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  min-height: 65vh;
+  padding: 1rem;
+  overflow-y: auto;
+  width: 300px;
+  background-color: #fefefe;
+
+  transform-origin: right;
+  animation: slide 0.2s ease;
+
+  @keyframes slide {
+    0% {
+      transform: scaleX(0);
+    }
+    100% {
+      transform: scaleX(1);
+    }
+  }
+`;
+
+const CloseButton = styled(X)`
+  cursor: pointer;
+`;
+
 export default function Trolley({ totalItems, totalPrice, disabled }) {
+  const [openTrolley, setOpenTrolley] = useState(false);
+
+  function toggleTrolley() {
+    setOpenTrolley(!openTrolley);
+    console.log("trolley clicked", openTrolley);
+  };
+
   return (
-    <Button disabled={disabled}>
+    <>
+    <Button disabled={disabled} onClick={toggleTrolley} aria-label="open trolley">
       <ShoppingCart />
       £{totalPrice.toFixed(2)}
       {totalItems > 0 &&
@@ -57,7 +95,14 @@ export default function Trolley({ totalItems, totalPrice, disabled }) {
           {totalItems}
         </TotalItemContainer>
       }
-    </Button> 
+    </Button>
+    
+    {openTrolley &&
+      <TrolleyContainer>
+        <CloseButton onClick={toggleTrolley} size={32} aria-label="close trolley" />
+      </TrolleyContainer>
+    }
+    </>
   );
 };
 
