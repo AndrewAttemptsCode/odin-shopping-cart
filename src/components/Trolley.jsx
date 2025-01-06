@@ -83,6 +83,14 @@ const TrolleyHeader = styled.header`
   border-bottom: 1px solid #ddd;
 `;
 
+const TrolleyFooter = styled.footer`
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  padding: 1rem;
+  border-top: 1px solid #ddd;
+`;
+
 const CloseButton = styled(X)`
   cursor: pointer;
 `;
@@ -113,7 +121,10 @@ export default function Trolley({ totalItems, totalPrice, disabled }) {
           <h2>Trolley ({totalItems} {totalItems === 1 ? 'item' : 'items'})</h2>
           <CloseButton onClick={toggleTrolley} size={32} aria-label="close trolley" />
         </TrolleyHeader>
-        
+        <TrolleyFooter>
+          <h2>Subtotal</h2>
+          <h2>£{totalPrice}</h2>
+        </TrolleyFooter>
       </TrolleyContainer>
     }
     </>
