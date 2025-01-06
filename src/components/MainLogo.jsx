@@ -30,7 +30,7 @@ const StyledIcon = styled(Store)`
   height: ${({ $size }) => $size || "48px"};
 `;
 
-export default function MainLogo({ to="/", $size="48px", $color="#451a03", $textSize="2rem" }) {
+export default function MainLogo({ to="shop", $size="48px", $color="#451a03", $textSize="2rem" }) {
   return (
     <LogoLink to={to}>
       <Container>
