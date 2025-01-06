@@ -1,6 +1,7 @@
 import { ShoppingBasket, ShoppingCart, X } from "lucide-react";
 import PropTypes from "prop-types";
 import { useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Button = styled.button`
@@ -119,10 +120,16 @@ const CheckoutButton = styled(Button)`
 
 export default function Trolley({ totalItems, totalPrice, disabled }) {
   const [openTrolley, setOpenTrolley] = useState(false);
+  const navigate = useNavigate();
 
   function toggleTrolley() {
     setOpenTrolley(!openTrolley);
     console.log("trolley clicked", openTrolley);
+  };
+
+  function handleCheckout() {
+    navigate('checkout');
+    setOpenTrolley(!openTrolley);
   };
 
   return (
@@ -151,7 +158,7 @@ export default function Trolley({ totalItems, totalPrice, disabled }) {
             <h2>Subtotal</h2>
             <h2>£{totalPrice.toFixed(2)}</h2>
           </SubtotalWrapper>
-          <CheckoutButton>
+          <CheckoutButton onClick={handleCheckout}>
             <ShoppingBasket />
             Checkout
           </CheckoutButton>
