@@ -1,4 +1,4 @@
-import { ShoppingCart, X } from "lucide-react";
+import { ShoppingBasket, ShoppingCart, X } from "lucide-react";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import styled from "styled-components";
@@ -86,7 +86,7 @@ const TrolleyHeader = styled.header`
 
 const TrolleyFooter = styled.footer`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-content: center;
   padding: 1rem;
   border-top: 1px solid #ddd;
@@ -103,6 +103,18 @@ const TrolleyMain = styled.main`
 
 const CloseButton = styled(X)`
   cursor: pointer;
+`;
+
+const SubtotalWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const CheckoutButton = styled(Button)`
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1.1rem;
+  gap: 0.5rem;
 `;
 
 export default function Trolley({ totalItems, totalPrice, disabled }) {
@@ -135,8 +147,14 @@ export default function Trolley({ totalItems, totalPrice, disabled }) {
           {/* todo: purchased items go here with image, title, price, increase/decrease item button and display */}
         </TrolleyMain>
         <TrolleyFooter>
-          <h2>Subtotal</h2>
-          <h2>£{totalPrice.toFixed(2)}</h2>
+          <SubtotalWrapper>
+            <h2>Subtotal</h2>
+            <h2>£{totalPrice.toFixed(2)}</h2>
+          </SubtotalWrapper>
+          <CheckoutButton>
+            <ShoppingBasket />
+            Checkout
+          </CheckoutButton>
         </TrolleyFooter>
       </TrolleyContainer>
     }
