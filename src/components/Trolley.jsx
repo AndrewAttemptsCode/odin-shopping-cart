@@ -56,6 +56,7 @@ const TrolleyContainer = styled.div`
   right: 0;
   z-index: 10;
   height: 100%;
+  /* remove width when product cards is implemented */
   width: 300px;
   background-color: #fefefe;
   border-top-left-radius: 5px;
@@ -93,6 +94,8 @@ const TrolleyFooter = styled.footer`
 
 const TrolleyMain = styled.main`
   display: flex;
+  flex-direction: column;
+  align-items: center;
   flex-grow: 1;
   padding: 1rem;
   overflow-y: auto;
@@ -129,7 +132,7 @@ export default function Trolley({ totalItems, totalPrice, disabled }) {
           <CloseButton onClick={toggleTrolley} size={32} aria-label="close trolley" />
         </TrolleyHeader>
         <TrolleyMain>
-
+          {/* todo: purchased items go here with image, title, price, increase/decrease item button and display */}
         </TrolleyMain>
         <TrolleyFooter>
           <h2>Subtotal</h2>
