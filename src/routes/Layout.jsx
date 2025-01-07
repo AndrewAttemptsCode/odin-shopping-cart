@@ -73,7 +73,7 @@ export default function Layout() {
     <GridContainer>
       <Header>
         <MainLogo />
-        <Trolley totalItems={totalItems} totalPrice={totalPrice} disabled={totalItems < 1} />
+        <Trolley totalItems={totalItems} totalPrice={totalPrice} shopTrolley={shopTrolley} addToTrolley={addToTrolley} removeFromTrolley={removeFromTrolley} disabled={totalItems < 1} />
         {/* logo
         nav bar
         trolley button with slideout */}
