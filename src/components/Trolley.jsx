@@ -1,8 +1,9 @@
 import { ShoppingBasket, ShoppingCart, X } from "lucide-react";
 import PropTypes from "prop-types";
 import { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import TrolleyCard from "./TrolleyCard";
 
 const Button = styled.button`
   position: relative;
@@ -57,8 +58,7 @@ const TrolleyContainer = styled.div`
   right: 0;
   z-index: 10;
   height: 100%;
-  /* remove width when product cards is implemented */
-  width: 300px;
+  width: 400px;
   background-color: #fefefe;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -100,6 +100,7 @@ const TrolleyMain = styled.main`
   flex-grow: 1;
   padding: 1rem;
   overflow-y: auto;
+  gap: 1rem;
 `;
 
 const CloseButton = styled(X)`
@@ -118,7 +119,7 @@ const CheckoutButton = styled(Button)`
   gap: 0.5rem;
 `;
 
-export default function Trolley({ totalItems, totalPrice, disabled }) {
+export default function Trolley({ totalItems, totalPrice, shopTrolley, addToTrolley, removeFromTrolley, disabled }) {
   const [openTrolley, setOpenTrolley] = useState(false);
   const navigate = useNavigate();
 
@@ -151,7 +152,18 @@ export default function Trolley({ totalItems, totalPrice, disabled }) {
           <CloseButton onClick={toggleTrolley} size={32} aria-label="close trolley" />
         </TrolleyHeader>
         <TrolleyMain>
-          {/* todo: purchased items go here with image, title, price, increase/decrease item button and display */}
+          {shopTrolley.map((shopItem) => (
+            <TrolleyCard
+              key={shopItem.id}
+              id={shopItem.id}
+              shopTrolley={shopTrolley}
+              addToTrolley={addToTrolley}
+              removeFromTrolley={removeFromTrolley}
+              src={shopItem.src}
+              title={shopItem.title}
+              price={shopItem.price}
+            />
+          ))}
         </TrolleyMain>
         <TrolleyFooter>
           <SubtotalWrapper>
@@ -173,4 +185,5 @@ Trolley.propTypes = {
   totalItems: PropTypes.number.isRequired,
   totalPrice: PropTypes.number.isRequired,
   disabled: PropTypes.bool.isRequired,
+  shopTrolley: PropTypes.array.isRequired,
 };
