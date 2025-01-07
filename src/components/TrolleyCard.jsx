@@ -16,6 +16,7 @@ const ProductImage = styled.img`
   object-position: center;
   width: 100px;
   height: 100px;
+  flex-shrink: 0;
 `;
 
 const ProductTitle = styled.h2`
@@ -47,8 +48,6 @@ const QuantityButton = styled.button`
 
 const ButtonContainer = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   align-items: center;
   gap: 1rem;
 `;
@@ -56,6 +55,7 @@ const ButtonContainer = styled.div`
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   justify-content: space-between;
   overflow: hidden;
 `;
@@ -68,6 +68,8 @@ const RowWrapper = styled.div`
 
 const QuantityDisplay = styled.span`
   font-weight: bold;
+  text-align: center;
+  width: 2ch;
 `;
 
 export default function TrolleyCard({ id, src, title, price, shopTrolley, addToTrolley, removeFromTrolley }) {
