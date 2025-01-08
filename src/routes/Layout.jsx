@@ -79,7 +79,7 @@ export default function Layout() {
         trolley button with slideout */}
       </Header>
       <Main>
-        <Outlet context={{ shopItems, shopTrolley, addToTrolley, removeFromTrolley }} />
+        <Outlet context={{ shopItems, shopTrolley, addToTrolley, removeFromTrolley, totalItems, totalPrice }} />
         {/* landing page
         shopping items page
         view full trolley page */}
