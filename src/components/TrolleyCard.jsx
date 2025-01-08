@@ -105,5 +105,7 @@ TrolleyCard.propTypes = {
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   shopTrolley: PropTypes.array.isRequired,
+  addToTrolley: PropTypes.func.isRequired,
+  removeFromTrolley: PropTypes.func.isRequired,
 
 }
