@@ -192,4 +192,6 @@ Trolley.propTypes = {
   totalPrice: PropTypes.number.isRequired,
   disabled: PropTypes.bool.isRequired,
   shopTrolley: PropTypes.array.isRequired,
+  addToTrolley: PropTypes.func.isRequired,
+  removeFromTrolley: PropTypes.func.isRequired,
 };
