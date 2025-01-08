@@ -131,7 +131,6 @@ export default function Trolley({ totalItems, totalPrice, shopTrolley, addToTrol
 
   function toggleTrolley() {
     setOpenTrolley(!openTrolley);
-    console.log("trolley clicked", openTrolley);
   };
 
   function handleCheckout() {
